@@ -1,0 +1,335 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mainWallpaper {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../public/img/bbd47653b7db08205a5ebd8a47576c1041efa037_2_1035x582.jpeg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+header {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+header p {
+  font-size: 20px;
+}
+
+header h1 {
+  font-size: 60px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box button {
+  margin-bottom: 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: 200px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: #0c5132;
+  color: #fff;
+  border: 1px solid white;
+}
+
+.box button:hover {
+  border: 1px solid #0c5132;
+}
+
+/**FORM INPUT*/
+#formInput > div {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
+}
+
+#formInput form {
+  display: flex;
+  flex-direction: column;
+}
+
+#formInput form input::placeholder {
+  color: #c2c2c2;
+}
+
+#formInput form input {
+  background-color: #0c5132;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  padding: 5px 10px;
+  width: 250px;
+  font-size: 16px;
+  border: 1px solid #fff;
+}
+
+#closeFormBtn {
+  border: none;
+  outline: none;
+  border: 1px solid rgb(255, 255, 255, 0.5);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 2px 4px;
+  background-image: radial-gradient(#0c5132, black);
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+#signBtn {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 2px 6px;
+  cursor: pointer;
+  border: 1px solid rgb(255, 255, 255, 0.5);
+  background-color: rgb(10, 10, 10);
+  color: #fff;
+  background-image: radial-gradient(#0c5132, black);
+  font-weight: bold;
+}
+
+/**MAIN PAGE*/
+.header {
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  text-align: center;
+  color: #fff;
+}
+
+.mainPage {
+  background-image: url(../public/img/Original-Cool-Green-and-Black-Wallpaper.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container-page {
+  margin: 0px auto;
+  max-width: 1200px;
+}
+
+.hero {
+  color: #fff;
+  display: flex;
+}
+
+.themes {
+  width: 25%;
+  background-color: rgb(12, 25, 10, 0.7);
+  margin-right: 20px;
+  border-radius: 10px;
+  padding: 10px 15px;
+  height: fit-content;
+}
+
+.themes form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/**Button*/
+#createConversation {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-size: 16px;
+  background-image: radial-gradient(rgb(8, 58, 8), rgb(25, 25, 25));
+  border: 1px solid rgb(255, 255, 255, 0.5);
+  color: #fff;
+  transition: 200ms;
+}
+
+#createConversation:hover {
+  border: 1px solid transparent;
+}
+
+.themes form input {
+  margin-right: 5px;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 2px 6px;
+  width: 70%;
+  border: 1px solid rgb(255, 255, 255, 0.5);
+  background-color: rgb(12, 25, 10, 0.7);
+  color: #fff;
+}
+
+.themes ul li {
+  list-style: none;
+  margin-bottom: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: 1px solid rgb(255, 255, 255, 0.5);
+  padding: 2px 6px;
+  border-radius: 5px;
+  background-image: radial-gradient(rgb(8, 58, 8), rgb(25, 25, 25));
+  transition: 200ms;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.themes ul li:hover {
+  border: 1px solid transparent;
+}
+
+.themes ul li:last-child {
+  margin-bottom: 0;
+}
+
+#deleteCategory {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-size: 12px;
+  background-image: radial-gradient(rgb(8, 58, 8), rgb(25, 25, 25));
+  border: 1px solid rgb(255, 255, 255, 0.5);
+  color: #fff;
+  transition: 200ms;
+}
+
+#deleteCategory:hover {
+  background-image: radial-gradient(rgb(255, 0, 0), rgb(25, 25, 25));
+}
+
+.topics {
+  width: 75%;
+  background-color: rgb(28, 57, 21, 0.7);
+  border-radius: 10px;
+  padding: 7px 15px;
+}
+
+.topicsHeader h3 {
+  text-transform: uppercase;
+}
+
+.topicsHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+#startNewTopics {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-size: 16px;
+  background-image: radial-gradient(rgb(8, 58, 8), rgb(25, 25, 25));
+  border: 1px solid rgb(255, 255, 255, 0.5);
+  color: #fff;
+  transition: 200ms;
+}
+
+#startNewTopics:hover {
+  border: 1px solid transparent;
+}
+
+.topicsBody {
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.topicsBody::-webkit-scrollbar {
+  display: none;
+}
+
+.topicsBody textarea {
+  width: 100%;
+  border-radius: 10px;
+  background-color: rgba(88, 88, 88, 0.5);
+  resize: none;
+  min-height: 100px;
+  padding: 5px 10px;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  border: 1px solid transparent;
+  transition: 200ms;
+}
+
+.topicsBody textarea:focus {
+  border: 1px solid #fff;
+}
+
+.areaInput {
+  margin-bottom: 20px;
+}
+
+.areaSocial {
+  text-align: end;
+}
+
+.areaSocial button {
+  margin-right: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border: 1px solid rgb(255, 255, 255, 0.5);
+  padding: 2px;
+  border-radius: 5px;
+  transition: 200ms;
+}
+
+.areaSocial button:last-child {
+  margin-right: 0px;
+}
+
+.areaSocial button:hover {
+  border: 1px solid transparent;
+}
+
+.areaSocial button:active {
+  transform: scale(0.98);
+}
