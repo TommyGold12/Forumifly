@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "./supabaseClient";
 
 export default function App() {
   const [openForm, setIsOpen] = useState(false);
@@ -162,12 +163,48 @@ function CategoriesList({ dataCategories, openTopics, deleteTopics, errMess }) {
   );
 }
 
+/*
+  <div className="areaInput" key={i}>
+  <textarea></textarea>
+  <div className="areaSocial">
+    <button>
+      <p>👍</p>
+    </button>
+    <button>♥️</button>
+    <button>💬</button> */
+
 //* GLAVNA STRANICA FORUMA, KREIRANE KATEGORIJE, RAZGOVORI, NOVE PORUKE
 function Topics({ topicsName }) {
-  const [messages, newMessages] = useState([]);
+  const [messages, setMessages] = useState([]);
 
-  const createNewMessage = function () {
-    newMessages([...messages, ""]);
+  const createNewMessage = function (e) {
+    e.preventDefault();
+    const messageValue = e.target.messageInput.value;
+
+    if (messageValue) {
+      setMessages((prevMessage) => [
+        ...prevMessage,
+        { text: messageValue, likes: 0, hearts: 0, comments: 0, reply: [] },
+      ]);
+    }
+    e.target.reset();
+  };
+
+  const handleLikes = function (i) {
+    const newMessages = [...messages];
+    newMessages[i].likes += 1;
+    setMessages(newMessages);
+  };
+  const handleHearts = function (i) {
+    const newMessages = [...messages];
+    newMessages[i].hearts += 1;
+    setMessages(newMessages);
+  };
+  const handleComments = function (i) {
+    const newMessages = [...messages];
+    newMessages[i].comments += 1;
+    newMessages[i].reply = true;
+    setMessages(newMessages);
   };
 
   return (
@@ -176,23 +213,49 @@ function Topics({ topicsName }) {
         <>
           <div className="topicsHeader">
             <h3>{topicsName}</h3>
-            <button id="startNewTopics" onClick={() => createNewMessage()}>
-              New Message
-            </button>
           </div>
           <div className="topicsBody">
-            {messages.map((_, i) => (
-              <div className="areaInput" key={i}>
-                <textarea></textarea>
-                <div className="areaSocial">
-                  <button>
-                    <p>👍</p>
-                  </button>
-                  <button>♥️</button>
-                  <button>💬</button>
+            {messages.map((msg, i) => (
+              <>
+                <div className="topicsArea">
+                  <div key={i} className="topicsMessage">
+                    <p>{msg.text}</p>
+                  </div>
+                  <div className="topicsSocial">
+                    <button onClick={() => handleLikes(i)}>
+                      <p>👍{msg.likes}</p>
+                    </button>
+                    <button onClick={() => handleHearts(i)}>
+                      <p>♥️{msg.hearts}</p>
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleComments(i);
+                      }}
+                    >
+                      <p>💬{msg.comments}</p>
+                    </button>
+                  </div>
+
+                  {msg.reply && (
+                    <div className="re-topicsMessage">
+                      <input placeholder="Reply..."></input>
+                    </div>
+                  )}
                 </div>
-              </div>
+              </>
             ))}
+          </div>
+          <div className="topicsFooterInput">
+            <form onSubmit={(e) => createNewMessage(e)}>
+              <textarea
+                id="messageInput"
+                placeholder="type something..."
+              ></textarea>
+              <button type="submit" id="startNewTopics">
+                Send
+              </button>
+            </form>
           </div>
         </>
       )}
@@ -237,15 +300,28 @@ function UserForm({ type, onCloseForm, onSubmit }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  //* Potvrđivanje forme, ispitivanje podudarnosti passworda
-  const handleSubmit = (e) => {
+  //* SUPABASE SERVER
+  //* Potvrđivanje forme, ispitivanje podudarnosti passworda, pozivanje supabase servera
+  async function handleSubmit(e) {
+    console.log(formData.username);
     e.preventDefault();
     if (type === "register" && formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
+    //*Slanje obrasca supabase-u
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+      });
+      alert("Check your email for verification link");
+    } catch (error) {
+      alert(error);
+    }
+
     onSubmit(formData);
-  };
+  }
 
   return (
     <>
